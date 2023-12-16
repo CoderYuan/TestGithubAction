@@ -10,10 +10,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Print secrets  
-      env:
-        _secrets.GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}  
-        _secrets.GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build artifacts
       run: |
-        echo "Repository: $_secrets.GITHUB_REPOSITORY"
-        echo "Token: $_secrets.GITHUB_TOKEN"
+        echo "Building artifacts for ${{ secrets.GITHUB_REPOSITORY }}"
+        mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
+        

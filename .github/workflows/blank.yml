@@ -17,6 +17,6 @@ jobs:
       run: |
         cat README.md
         
-    # - name: Print README commit history
-    #   run: |
-    #     git log --follow README.md
+    - name: Print README commit history
+      run: |
+        git log --follow README.md

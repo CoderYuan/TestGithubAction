@@ -11,15 +11,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
-    - name: Install Git
-      run: |
-        apt-get update
-        apt-get install -y git
+
         
     - name: Print README contents
       run: |
         cat README.md
         
-    - name: Print README commit history
-      run: |
-        git log --follow README.md
+    # - name: Print README commit history
+    #   run: |
+    #     git log --follow README.md

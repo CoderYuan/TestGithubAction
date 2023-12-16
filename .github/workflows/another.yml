@@ -15,6 +15,6 @@ jobs:
 
 
     - name: Print README
-      run: cat README.md
+      run: cat README
       env:
         working-directory: ./hello-world

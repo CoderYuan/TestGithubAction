@@ -10,8 +10,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Build artifacts
+    - name: Print something
       run: |
-        echo "Building artifacts for ${{ secrets.GITHUB_REPOSITORY }}"
-        mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
+        echo "secrect: for ${{ secrets.TEST_SECRECT_1 }}"
+        echo "var: ${{ vars.TEST_VAR_1 }}"
+        # mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
         

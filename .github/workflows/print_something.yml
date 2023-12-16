@@ -1,0 +1,19 @@
+name: Print something
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  print-secrets:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Print secrets  
+      env:
+        _secrets.GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}  
+        _secrets.GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Repository: $_secrets.GITHUB_REPOSITORY"
+        echo "Token: $_secrets.GITHUB_TOKEN"

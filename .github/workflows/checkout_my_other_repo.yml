@@ -1,22 +1,20 @@
-name: Print README Content and History
+name: Checkout my othe repo
 
-on:
+on: 
   workflow_dispatch:
-  
+
 jobs:
   print-readme:
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Checkout code
-      uses: actions/checkout@v3
-    
+    - name: Checkout branch
+      uses: actions/checkout@v2
+      with:
+        repository: CoderYuan/helloworld
+        ref: master
 
-        
-    - name: Print README contents
-      run: |
-        cat README.md
-        
-    - name: Print README commit history
-      run: |
-        git log --follow README.md
+
+    - name: Print README
+      run: cat README.md
+      env:
+        working-directory: ./helloworld

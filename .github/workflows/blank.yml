@@ -7,15 +7,13 @@ jobs:
   print-readme-info:
     runs-on: ubuntu-latest 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        repository: CoderYuan/helloworld
-        ref: main
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    # - name: Print README contents
-    #   run: | 
-    #     cat README.md
-    #   working-directory: ./helloworld
+    - name: Print README contents
+      run: | 
+        cat README.md
+      working-directory: ./helloworld
 
     # - name: Print README commit history
     #   run: |

@@ -12,10 +12,10 @@ jobs:
         repository: CoderYuan/helloworld
         ref: main
 
-    - name: Print README contents
-      run: | 
-        cat README.md
-      working-directory: ./helloworld
+    # - name: Print README contents
+    #   run: | 
+    #     cat README.md
+    #   working-directory: ./helloworld
 
     # - name: Print README commit history
     #   run: |

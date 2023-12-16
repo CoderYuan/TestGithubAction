@@ -1,21 +1,25 @@
-name: Print README and History
+name: Print README Content and History
 
 on:
   workflow_dispatch:
-
+  
 jobs:
-  print-readme-info:
-    runs-on: ubuntu-latest 
+  print-readme:
+    runs-on: ubuntu-latest
     steps:
+    
     - name: Checkout code
       uses: actions/checkout@v3
-
+    
+    - name: Install Git
+      run: |
+        apt-get update
+        apt-get install -y git
+        
     - name: Print README contents
-      run: | 
+      run: |
         cat README.md
-      working-directory: ./helloworld
-
-    # - name: Print README commit history
-    #   run: |
-    #     git log --follow README.md 
-    #   working-directory: ./helloworld
+        
+    - name: Print README commit history
+      run: |
+        git log --follow README.md

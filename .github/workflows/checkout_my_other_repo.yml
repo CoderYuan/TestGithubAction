@@ -1,4 +1,4 @@
-name: Checkout my othe repo
+name: Checkout My other public repo
 
 on: 
   workflow_dispatch:

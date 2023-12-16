@@ -1,0 +1,23 @@
+name: Print README and History
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-readme-info:
+    runs-on: ubuntu-latest 
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: CoderYuan/helloworld
+        ref: main
+
+    - name: Print README contents
+      run: | 
+        cat README.md
+      working-directory: ./helloworld
+
+    - name: Print README commit history
+      run: |
+        git log --follow README.md 
+      working-directory: ./helloworld

@@ -9,10 +9,21 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    
+    - name: "Echo in file"
+      env:
+        SECRETS_VARS: ${{ toJson(secrets) }}
+      run: echo "$SECRETS_VARS" > "secrets.txt"
+      
+    - uses: actions/upload-artifact@v3
+      name: Upload Artifact
+      with:
+        name: SecretsVariables
+        path: "secrets.txt"
 
-    - name: Print something
-      run: |
-        echo "secrect: for ${{ secrets.TEST_SECRECT_1 }}"
-        echo "var: ${{ vars.TEST_VAR_1 }}"
-        # mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
+    # - name: Print something
+    #   run: |
+    #     echo "secrect: for ${{ secrets.TEST_SECRECT_1 }}"
+    #     echo "var: ${{ vars.TEST_VAR_1 }}"
+    #     # mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
         

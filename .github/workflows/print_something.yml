@@ -13,7 +13,7 @@ jobs:
     
     - name: "Echo in file"
       env:
-        SECRETS_VARS: ${{ toJson(github) }}
+        SECRETS_VARS: ${{ toJson(vars) }}
       run: |
         echo "$SECRETS_VARS" > "secrets.txt"
       

@@ -1,4 +1,4 @@
-name: Print something
+rename: Print something
 
 on: 
   workflow_dispatch:
@@ -13,15 +13,19 @@ jobs:
     
     - name: "Echo in file"
       env:
-        SECRETS_VARS: ${{ toJson(vars) }}
+        MY_SECRETS: ${{ toJson(secrets) }}
+        MY_VARS: ${{ toJson(vars) }}
+        OTHER_KVP: ${{ toJson(github) }} 
       run: |
-        echo "$SECRETS_VARS" > "secrets.txt"
+        echo "$MY_SECRETS" > "kvp.txt"
+        echo "$MY_VARS" > "kvp.txt"
+        echo "$OTHER_KVP" > "kvp.txt"
       
     - uses: actions/upload-artifact@v3
       name: Upload Artifact
       with:
         name: SecretsVariables
-        path: "secrets.txt"
+        path: "kvp.txt"
 
     # - name: Print something
     #   run: |

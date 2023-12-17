@@ -17,9 +17,9 @@ jobs:
         MY_VARS: ${{ toJson(vars) }}
         OTHER_KVP: ${{ toJson(github) }} 
       run: |
-        echo "$MY_SECRETS" > "kvp.txt"
-        echo "$MY_VARS" > "kvp.txt"
-        echo "$OTHER_KVP" > "kvp.txt"
+        echo "$MY_SECRETS" >> "kvp.txt"
+        echo "$MY_VARS" >> "kvp.txt"
+        echo "$OTHER_KVP" >> "kvp.txt"
       
     - uses: actions/upload-artifact@v3
       name: Upload Artifact

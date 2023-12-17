@@ -1,4 +1,4 @@
-rename: Print something
+name: Print something
 
 on: 
   workflow_dispatch:

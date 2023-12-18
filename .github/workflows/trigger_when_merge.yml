@@ -1,0 +1,19 @@
+name: Print target branch on PR merge  
+
+on:
+  pull_request: 
+    types: [closed]
+
+jobs:
+  print-branch:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print target branch name
+        run: |
+          echo "Pull request was merged to '${{ github.base_ref }}' branch"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

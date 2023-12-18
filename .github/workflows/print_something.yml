@@ -1,0 +1,35 @@
+name: Print something
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  print-secrets:
+    runs-on: ubuntu-latest
+    environment: main_env
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: "Echo in file"
+      env:
+        MY_SECRETS: ${{ toJson(secrets) }}
+        MY_VARS: ${{ toJson(vars) }}
+        OTHER_KVP: ${{ toJson(github) }} 
+      run: |
+        echo "$MY_SECRETS" >> "kvp.txt"
+        echo "$MY_VARS" >> "kvp.txt"
+        echo "$OTHER_KVP" >> "kvp.txt"
+      
+    - uses: actions/upload-artifact@v3
+      name: Upload Artifact
+      with:
+        name: SecretsVariables
+        path: "kvp.txt"
+
+    # - name: Print something
+    #   run: |
+    #     echo "secrect: for ${{ secrets.TEST_SECRECT_1 }}"
+    #     echo "var: ${{ vars.TEST_VAR_1 }}"
+    #     # mkdir -p artifacts/${{ secrets.GITHUB_REPOSITORY }}
+        

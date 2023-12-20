@@ -15,5 +15,5 @@ jobs:
       - name: Print target branch name
         run: |
           echo "Pull request was merged to '${{ github.base_ref }}' branch"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
